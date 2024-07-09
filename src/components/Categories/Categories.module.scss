@@ -1,0 +1,17 @@
+.header {
+  padding: 12px 0;
+}
+
+.title {
+  font: 700 32px / 36px var(--font-family);
+}
+
+.date {
+  padding-top: 12px;
+  padding-bottom: 24px;
+
+  font: 400 16px / 16px var(--font-family);
+  color: #090a0a;
+
+  border-bottom: 1px solid #f2f4f5;
+}

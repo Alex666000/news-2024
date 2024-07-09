@@ -1,4 +1,4 @@
-import { News } from '@/api/apiNews'
+import { NewsType } from '@/api/apiNews'
 import { Image } from '@/components/Image/Image'
 import { formatTimeAgo } from '@/helpers/formatTimeAgo'
 

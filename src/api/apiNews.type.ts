@@ -1,12 +1,12 @@
 // types
-export type NewsApiResponse = {
+export type NewsApiResponseType = {
   // массив новостей: News
-  news: News[]
+  news: NewsType[]
   page: number
   status: string
 }
 // одна новость
-export type News = {
+export type NewsType = {
   author: string
   category: string[]
   description: string
@@ -18,59 +18,10 @@ export type News = {
   url: string
 }
 
-export type ErrorResponse = {
+export type ErrorResponseType = {
   code: 'ERR_NETWORK'
   config: any
   message: string
   name: 'AxiosError'
   request: any
 }
-
-// Categories
-export type Categories =
-  | 'CS'
-  | 'EE'
-  | 'academia'
-  | 'academic'
-  | 'art'
-  | 'auto'
-  | 'business'
-  | 'celebrity'
-  | 'commodity'
-  | 'crap'
-  | 'culture'
-  | 'design'
-  | 'economy'
-  | 'education'
-  | 'energy'
-  | 'entertainment'
-  | 'entrepreneur'
-  | 'environment'
-  | 'estate'
-  | 'fashion'
-  | 'finance'
-  | 'food'
-  | 'funny'
-  | 'gadgets'
-  | 'game'
-  | 'general'
-  | 'health'
-  | 'lifestyle'
-  | 'medical'
-  | 'mobile'
-  | 'movie'
-  | 'music'
-  | 'notsure'
-  | 'opinion'
-  | 'politics'
-  | 'programming'
-  | 'redundant'
-  | 'regional'
-  | 'review'
-  | 'science'
-  | 'security'
-  | 'sports'
-  | 'technology'
-  | 'television'
-  | 'travel'
-  | 'world'

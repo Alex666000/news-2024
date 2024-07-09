@@ -1,4 +1,4 @@
-import { News } from '@/api/apiNews'
+import { NewsType } from '@/api/apiNews'
 import { formatTimeAgo } from '@/helpers/formatTimeAgo'
 
 import s from './NewsItem.module.scss'

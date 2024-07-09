@@ -1,17 +1,36 @@
-.header {
-  padding: 12px 0;
+// Табы
+.categories {
+  // убираем скролл-бар
+  scrollbar-width: none;
+
+  overflow-x: auto;
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+
+  box-sizing: border-box;
+  width: 100%;
+
+  white-space: nowrap;
 }
 
-.title {
-  font: 700 32px / 36px var(--font-family);
+.item,
+.active {
+  display: flex;
+  align-items: center;
+
+  padding: 8px 16px;
+
+  background-color: #f2f4f5;
+  border: none;
+  border-radius: 32px;
 }
 
-.date {
-  padding-top: 12px;
-  padding-bottom: 24px;
+.active {
+  color: #6b4eff;
+  background-color: #e7e7ff;
+}
 
-  font: 400 16px / 16px var(--font-family);
-  color: #090a0a;
-
-  border-bottom: 1px solid #f2f4f5;
+::-webkit-scrollbar {
+  display: none;
 }

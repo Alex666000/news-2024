@@ -1,21 +1,23 @@
 .pagination {
   display: flex;
-  width: 100%;
   gap: 12px;
   align-items: center;
   justify-content: center;
+
+  width: 100%;
 }
 
 .pageNumber,
 .arrow {
-  border: none;
-  background-color: white;
   cursor: pointer;
+  background-color: white;
+  border: none;
 }
 
 .pageNumber:disabled,
 .arrow:disabled {
   cursor: default;
+  opacity: 0.5;
 }
 
 .pageNumber {

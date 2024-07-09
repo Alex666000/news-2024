@@ -1,4 +1,4 @@
-import { News } from '@/api/apiNews'
+import { NewsType } from '@/api/apiNews'
 import { NewsItem } from '@/components/NewsItem/NewsItem'
 
 import s from './NewsList.module.scss'

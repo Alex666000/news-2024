@@ -1,45 +1,42 @@
+import { CategoriesApiResponseType, CategoriesType } from '@/api/apiCategories.type.ts'
+import { ErrorResponseType, NewsApiResponseType, NewsType } from '@/api/apiNews.type.ts'
 import axios from 'axios'
 
 const BASE_URL = import.meta.env.VITE_NEWS_API_URL
 const API_KEY = import.meta.env.VITE_NEWS_API_KEY
 
-export const getNews = async () => {
+export type GetNewsArgsType = { category: CategoriesType; page_number: number; page_size: number }
+
+export const getNews = async ({ category, page_number = 1, page_size = 10 }: GetNewsArgsType) => {
   try {
-    const response = await axios.get<GetNewsResponse>(`${BASE_URL}/latest-news`, {
+    const response = await axios.get<NewsApiResponseType>(`${BASE_URL}/latest-news`, {
       params: {
         apiKey: API_KEY,
+        category,
+        page_number,
+        page_size,
       },
     })
 
     return response.data
-  } catch (e) {
-    console.log(e)
+  } catch (e: ErrorResponseType) {
+    // console.log(e)
   }
 }
-// type
-export type GetNewsResponse = {
-  // массив новостей
-  news: News[]
-  page: number
-  status: string
-}
-// одна новость
-export type News = {
-  author: string
-  category: string[]
-  description: string
-  id: string
-  image: string
-  language: string
-  published: string
-  title: string
-  url: string
-}
 
-export type ErrorResponse = {
-  code: 'ERR_NETWORK'
-  config: any
-  message: string
-  name: 'AxiosError'
-  request: any
+export const getCategories = async () => {
+  try {
+    const response = await axios.get<CategoriesApiResponseType>(
+      `${BASE_URL}/available/categories`,
+      {
+        params: {
+          apiKey: API_KEY,
+        },
+      }
+    )
+
+    return response.data
+  } catch (e: ErrorResponseType) {
+    // console.log(e)
+  }
 }

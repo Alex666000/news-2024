@@ -1,45 +1,42 @@
-import styles from "./styles.module.css";
+import s from './Pagination.module.scss'
 
-const Pagination = ({
-  totalPages,
-  handlePreviousPage,
-  handleNextPage,
-  handlePageClick,
-  currentPage,
-}) => {
+type Props = {
+  currentPage: number
+  handleNextPage: () => void
+  handlePageClick: (pageNumber: number) => void
+  handlePreviousPage: () => void
+  totalPages: number
+}
+
+/** Переиспользуемый компонент - все данные получает только через "props" */
+const Pagination = (props: Props) => {
+  const { currentPage, handleNextPage, handlePageClick, handlePreviousPage, totalPages } = props
+
   return (
-    <div className={styles.pagination}>
-      <button
-        disabled={currentPage <= 1}
-        onClick={handlePreviousPage}
-        className={styles.arrow}
-      >
-        {"<"}
+    <div className={s.pagination}>
+      <button className={s.arrow} disabled={currentPage <= 1} onClick={handlePreviousPage}>
+        {'<'}
       </button>
-      <div className={styles.list}>
+      <div className={s.list}>
         {[...Array(totalPages)].map((_, index) => {
           return (
             <button
-              onClick={() => handlePageClick(index + 1)}
-              className={styles.pageNumber}
+              className={s.pageNumber}
               disabled={index + 1 === currentPage}
               key={index}
+              onClick={() => handlePageClick(index + 1)}
             >
               {index + 1}
             </button>
-          );
+          )
         })}
       </div>
 
-      <button
-        disabled={currentPage >= totalPages}
-        onClick={handleNextPage}
-        className={styles.arrow}
-      >
-        {">"}
+      <button className={s.arrow} disabled={currentPage >= totalPages} onClick={handleNextPage}>
+        {'>'}
       </button>
     </div>
-  );
-};
+  )
+}
 
-export default Pagination;
+export default Pagination

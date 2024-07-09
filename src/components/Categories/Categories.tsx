@@ -1,17 +1,30 @@
-import { useFormatDate } from '@/hooks/useFormatDate'
-import { Container } from '@/shared/ui/Container'
+import { CategoriesType } from '@/api/apiCategories.type.ts'
 
-import s from './Header.module.scss'
+import s from './Categories.module.scss'
 
-export const Header = () => {
-  const currentDate = useFormatDate()
+type Props = {
+  categories: CategoriesType[]
+  selectedCategory: CategoriesType | null
+  setSelectedCategory: (category: CategoriesType | null) => void
+}
 
+/**  Категории + Табы */
+export const Categories = ({ categories, selectedCategory, setSelectedCategory }: Props) => {
   return (
-    <header className={s.header}>
-      <Container>
-        <h1 className={s.title}>Good morning</h1>
-        <p className={s.date}>{currentDate}</p>
-      </Container>
-    </header>
+    <div className={s.categories}>
+      {categories?.map(category => {
+        return (
+          <button
+            /* если выбранная категория === категории по которой мапимся тогда "подсветить" её */
+            className={selectedCategory === category ? s.active : s.item}
+            key={category}
+            /* "сеттаем" выбираем категорию */
+            onClick={() => setSelectedCategory?.(category)}
+          >
+            {category}
+          </button>
+        )
+      })}
+    </div>
   )
 }
